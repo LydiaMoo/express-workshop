@@ -14,7 +14,12 @@
         </header>
         <main>
             <div class="entry-container">
-                <!--PASTE YOUR CODE HERE!! -->
+                <h3>Create a blog post</h3>
+                <form action="/create-post" method="POST">
+                    <textarea name="blogpost" rows="10" cols="14"></textarea>
+                    <!-- this button sends a post request to the server on the /create-post end point -->
+                    <button type="submit">Send</button>
+                </form>
             </div>
 
             <br/>

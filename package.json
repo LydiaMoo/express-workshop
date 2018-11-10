@@ -1,0 +1,29 @@
+{
+  "name": "express-workshop",
+  "version": "1.0.0",
+  "description": "Node Girls workshop tutorial code",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LydiaMoo/express-workshop.git"
+  },
+  "keywords": [
+    "node",
+    "girls",
+    "node",
+    "express"
+  ],
+  "author": "LydiaMoo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LydiaMoo/express-workshop/issues"
+  },
+  "homepage": "https://github.com/LydiaMoo/express-workshop#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-formidable": "^1.2.0"
+  }
+}
