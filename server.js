@@ -11,12 +11,18 @@ app.use(formidable());
 //serves all the files from the public dir, middleware
 app.use(express.static('public'));
 
-//__dirname is a node global object to the current working directory
-fs.readFile(__dirname + '/data/posts.json', function (error, file){
-  //file will be in buffer format so it's converted to a string
-  // console.log(file.toString()); 
-  // const parsedFile = JSON.parse(file); 
-});
+
+
+// app.get('/get-posts', function (req, res){
+//   //__dirname is a node global object to the current working directory
+//   fs.readFile(__dirname + '/data/posts.json', function (err, file){
+//     //file will be in buffer format so it's converted to a string
+//     // console.log(file.toString()); 
+//     // const parsedFile = JSON.parse(file); 
+//     res.sendFile(JSON.parse(file)); 
+//     console.log(file); 
+//   });
+// });
 
 //recieves the POST request from the frontend
 app.post('/create-post', function (req, res){
@@ -33,18 +39,20 @@ app.post('/create-post', function (req, res){
     if (error) console.err(error); 
     let parsedFile = JSON.parse(file);
     //add reponse to the existing object
-    writeFile = Object.assign(currentPost, parsedFile);
+    let writeFile = Object.assign(currentPost, parsedFile);
     console.log(writeFile); 
     writeFile = JSON.stringify(writeFile); 
+
     fs.writeFile(__dirname + '/data/posts.json', writeFile, function(err){
       if(err) {
         return console.log(err);
       };
     console.log("The file was saved!");
-
     });
   });
 }); 
+
+
 
 //set a port for the server to listen to
 app.listen(3000, function () {
@@ -61,11 +69,11 @@ app.listen(3000, function () {
 // });
 
 //routing
-// //handler function always takes a request and response object
-// app.get("/", function(req, res) {
-//   //when it responds to a request from the / path it sends the response below
-//   res.send("Welcome!");
-// })
+//handler function always takes a request and response object
+app.get("/get-posts", function(req, res) {
+  //when it responds to a request from the / path it sends the response below
+  res.sendFile(__dirname + '/data/posts.json');
+})
 
 // app.get("/node", function(req, res) {
 //   //when it responds to a request from the / path it sends the response below
